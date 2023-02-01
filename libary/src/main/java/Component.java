@@ -1,4 +1,3 @@
-package logiq;
 public class Component implements Runnable{
 
     String name;

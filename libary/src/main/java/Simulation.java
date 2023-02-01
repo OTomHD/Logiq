@@ -1,4 +1,3 @@
-package logiq;
 import java.util.ArrayList;
 
 public class Simulation {

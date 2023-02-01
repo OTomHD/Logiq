@@ -1,4 +1,3 @@
-package logiq;
 public class Pin {
     boolean HIGH;
 
