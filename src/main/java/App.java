@@ -1,8 +1,9 @@
 public class App {
     Simulation sim ;
+    Terminal Ui ;
 
 
     public static void main(String[] args) {
-        System.out.print("Hello World!");
+        System.out.println("Hello World");
     }
 }
