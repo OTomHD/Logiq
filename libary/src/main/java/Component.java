@@ -1,4 +1,4 @@
-public class Component implements Runnable{
+public class Component{
 
     String name;
     Pin[] inputPins;
@@ -9,15 +9,15 @@ public class Component implements Runnable{
         this.inputPins = new Pin[input];
         this.outputPins = new Pin[output];
         for (int i = 0; i < input; i++) {
-            this.inputPins[i] = new Pin();
+            this.outputPins[i] = new Pin();
         }
     }
 
-    @Override
     public void run() {
-        boolean value = inputPins[0].isHIGH();
+        boolean value = inputPins[0].getState();
         for (Pin pin:outputPins) {
             if (pin == null){
+                System.err.println("Null Pin");
                 return;
             }
             pin.setState(value);
@@ -29,7 +29,7 @@ public class Component implements Runnable{
     }
     public String getName(){return this.name;}
 
-    public void connect(int from, Pin to){
-        this.outputPins[from] = to;
+    public void connect(int ID, Pin to){
+        this.outputPins[ID] = to;
     }
 }

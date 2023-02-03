@@ -13,16 +13,8 @@ application {
 }
 
 run {
-    args '4','2'
+    args '4','4'
     standardInput = System.in
-}
-
-jar {
-  manifest {
-    attributes(
-      'Main-Class': 'App'
-    )
-  }
 }
 
 dependencies {

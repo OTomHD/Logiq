@@ -1,17 +1,17 @@
 public class Pin {
-    boolean HIGH;
+    boolean state;
 
     Pin(){
-        this.HIGH = false;
+        this.state = false;
     }
     Pin(boolean state){
-        this.HIGH = state;
+        this.state = state;
     }
 
-    public boolean isHIGH() {
-        return HIGH;
+    public boolean getState() {
+        return state;
     }
     public void setState(boolean state) {
-        this.HIGH = state;
+        this.state = state;
     }
 }

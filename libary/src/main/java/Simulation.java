@@ -21,8 +21,7 @@ public class Simulation {
 
     public void step(){
         for (Component component:components) {
-            Thread thread = new Thread(component);
-            thread.start();
+            component.run();
         }
     }
 
@@ -33,21 +32,13 @@ public class Simulation {
         this.inputPins[id].setState(state);
     }
 
-    public boolean[] getInPins(){
-        int size = inputPins.length;
-        boolean[] output = new boolean[size];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = inputPins[i].isHIGH();
+    public void connect(int ID, Pin pin, boolean input){
+        if (input){ 
+            inputPins[ID] = pin;
+            return;
         }
-        return output;
+        outputPins[ID] = pin;
+        return;
     }
 
-    public boolean[] getOutPins(){
-        int size = outputPins.length;
-        boolean[] output = new boolean[size];
-        for (int i = 0; i < output.length; i++) {
-            output[i] = outputPins[i].isHIGH();
-        }
-        return output;
-    }
 }
