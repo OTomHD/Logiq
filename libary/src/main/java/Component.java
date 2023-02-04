@@ -15,12 +15,7 @@ public abstract class Component{
 
     public abstract void run();
 
-    public Pin getConnectedTo(int pin){
-        return this.outputPins[pin];
-    }
+    public Pin getConnectedTo(int pin){ return this.outputPins[pin];}
     public String getName(){return this.name;}
-
-    public void connect(int ID, Pin to){
-        this.outputPins[ID] = to;
-    }
+    public void connect(int ID, Pin to){ this.outputPins[ID] = to;}
 }
