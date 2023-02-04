@@ -31,8 +31,9 @@ class App {
     }
 
     public void addComponent(String name, int in, int out){
-        Component comp = new Component(name, in, out);
-        sim.addComponent(comp);
+        //Component comp = new Component(name, in, out);
+        // TODO: new component add system
+        //sim.addComponent(comp);
     }
 
     public void connect(int fromCompID, int fromPinID, int toCompID, int toPinID){

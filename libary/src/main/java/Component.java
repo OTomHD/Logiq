@@ -1,4 +1,4 @@
-public class Component{
+public abstract class Component{
 
     String name;
     Pin[] inputPins;
@@ -13,16 +13,7 @@ public class Component{
         }
     }
 
-    public void run() {
-        boolean value = inputPins[0].getState();
-        for (Pin pin:outputPins) {
-            if (pin == null){
-                System.err.println("Null Pin");
-                return;
-            }
-            pin.setState(value);
-        }
-    }
+    public abstract void run();
 
     public Pin getConnectedTo(int pin){
         return this.outputPins[pin];
