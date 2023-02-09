@@ -4,7 +4,6 @@ class App {
     private static App app = null;
     private static Simulation sim ;
     private static long lastStep;
-    private static UI ui;
     private static boolean NotClosed;
 
     public static void main(String[] args) {
@@ -15,7 +14,6 @@ class App {
             sim = new Simulation(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
         }
 
-        ui.start();
 
         while (NotClosed) {
             app.step();
@@ -102,7 +100,6 @@ class App {
             sim.step();
             lastStep = System.currentTimeMillis();
         }
-        ui.render();
     }
 
     private App(){
