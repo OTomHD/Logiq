@@ -4,7 +4,6 @@ class App {
     private static App app = null;
     private static Simulation sim ;
     private static long lastStep;
-    private static UI ui;
     private static boolean NotClosed;
 
     public static void main(String[] args) {
@@ -15,7 +14,10 @@ class App {
             sim = new Simulation(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
         }
 
+<<<<<<< HEAD
         boolean[] input;
+=======
+>>>>>>> 77d527e866c90e6c5d71d58b998408f10fd73ba2
 
         app.addComponent("node");
         app.connect(0, 0, 0, true); // test node
@@ -148,7 +150,10 @@ class App {
             sim.step();
             lastStep = System.currentTimeMillis();
         }
+<<<<<<< HEAD
         //ui.render();
+=======
+>>>>>>> 77d527e866c90e6c5d71d58b998408f10fd73ba2
     }
 
     private App(){
