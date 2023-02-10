@@ -2,7 +2,6 @@ public class COr extends Component {
 
     COr(String name) {
         super(name, 2, 1);
-        //TODO Auto-generated constructor stub
     }
 
     @Override

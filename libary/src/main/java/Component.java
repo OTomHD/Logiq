@@ -9,6 +9,9 @@ public abstract class Component{
         this.inputPins = new Pin[input];
         this.outputPins = new Pin[output];
         for (int i = 0; i < input; i++) {
+            this.inputPins[i] = new Pin();
+        }
+        for (int i = 0; i < output; i++) {
             this.outputPins[i] = new Pin();
         }
     }

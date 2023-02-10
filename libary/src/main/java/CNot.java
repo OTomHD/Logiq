@@ -9,8 +9,9 @@ public class CNot extends Component{
         boolean value = inputPins[0].getState();
         if (value) {
             outputPins[0].setState(false);
+            return;
         }
-        outputPins[0].setState(false);
+        outputPins[0].setState(true);
         
     }
     

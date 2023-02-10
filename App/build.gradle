@@ -13,7 +13,7 @@ application {
 }
 
 run {
-    args '4','4'
+    args '2','3'
     standardInput = System.in
 }
 
