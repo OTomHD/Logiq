@@ -14,42 +14,9 @@ class App {
             sim = new Simulation(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
         }
 
-<<<<<<< HEAD
-        boolean[] input;
-=======
->>>>>>> 77d527e866c90e6c5d71d58b998408f10fd73ba2
-
-        app.addComponent("node");
-        app.connect(0, 0, 0, true); // test node
-        app.connect(0, 0, 0, false);
-        app.connect(1, 0, 0, false);
-        app.sim.components.clear();
-
-        app.addComponent("and");
-        app.sim.components.clear();
-
-        app.addComponent("or");
-        app.sim.components.clear();
-
-        app.addComponent("not");
-        app.connect(0, 0, 0, true); // test Not
-        app.connect(0, 0, 0, false);
-        app.sim.components.clear();
-
-        input = (true,false);
-        for (int i = 0; i < sim.inputPins.length; i++) {
-            app.simulationSetPin(i, input[i]);
+        while (NotClosed) {
+            app.step();
         }
-        app.step();
-        for (int i = 0; i < sim.outputPins.length; i++) {
-            System.out.print(app.getOutPin(i) + ", ");
-        }
-
-//        ui.start();
-//
-//        while (NotClosed) {
-//            app.step();
-//        }
     }
 
 // #~~~~~~~~~~~~~~~~~~~~~~Component
@@ -150,10 +117,6 @@ class App {
             sim.step();
             lastStep = System.currentTimeMillis();
         }
-<<<<<<< HEAD
-        //ui.render();
-=======
->>>>>>> 77d527e866c90e6c5d71d58b998408f10fd73ba2
     }
 
     private App(){
