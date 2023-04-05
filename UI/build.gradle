@@ -20,8 +20,9 @@ dependencies {
 }
 
 application {
-    mainClass = 'test'
+    mainClass = "JavaFxUI"
 }
+
 
 test {
     useJUnitPlatform()

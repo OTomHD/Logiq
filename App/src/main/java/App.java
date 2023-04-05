@@ -1,23 +1,12 @@
 import java.util.ArrayList;
 
+
+
 class App {
     private static App app = null;
-    private static Simulation sim ;
+    private Simulation sim ;
     private static long lastStep;
-    private static boolean NotClosed;
 
-    public static void main(String[] args) {
-        app = getInstanceApp();
-
-        sim = new Simulation(1, 2);
-        if (args.length > 1) {
-            sim = new Simulation(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-        }
-
-        while (NotClosed) {
-            app.step();
-        }
-    }
 
 // #~~~~~~~~~~~~~~~~~~~~~~Component
     public void componentSetPin(int compID, int pinID, boolean value){
@@ -105,12 +94,10 @@ class App {
         if (app == null){
             app = new App();
         }
+        app.sim = new Simulation(1, 1);
         return app;
     }
 
-    public void close(){
-        NotClosed = false;
-    }
 
     private void step(){
         if((System.currentTimeMillis() - lastStep) >= 1000) {
@@ -120,6 +107,5 @@ class App {
     }
 
     private App(){
-        NotClosed = true;
     }
 }
