@@ -18,70 +18,46 @@ public class UComponent extends Region{
             height = output*size;
         }
 
-        this.getChildren().add(new Rectangle(75, height, Color.AQUA));
 
-        for (int i = 1; i <= input; i++) {
-            DrawPin(0, i);
-        }
+        Rectangle base = new Rectangle(75, height, Color.AQUA);
+        base.setArcHeight(20);
+        base.setArcWidth(20);
 
-        for (int i = 1; i <= output; i++) {
-            DrawPin(75, i);
-        }
-
-        setOnMouseEntered(new EventHandler<MouseEvent>() {
-
+        base.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                System.out.println("Comp Enter");
                 setCursor(Cursor.MOVE);
             }
-            
         });
-
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-
+        base.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                System.out.println("Comp Exit");
                 setCursor(Cursor.DEFAULT);
             }
-            
         });
-
-        setOnMouseDragged(new EventHandler<MouseEvent>() {
+        base.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                System.out.println("Comp Drag2");
                 setTranslateX(event.getSceneX());
                 setTranslateY(event.getSceneY());
             }
         });
-        
+        this.getChildren().add(base);
+
+
+        for (int i = 1; i <= input; i++) {
+            DrawPin(0, i);
+        }
+        for (int i = 1; i <= output; i++) {
+            DrawPin(75, i);
+        }
     }
 
     public void DrawPin(double x, int i){
         UPin pin = new UPin(x, (i*size)-(size/2), size/3, Color.WHITE,"Test");
-            pin.setOnMouseDragged(new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent event) {
-                    event.consume();
-                }
-            });
-            pin.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent event) {
-                    setCursor(Cursor.OPEN_HAND);
-                }
-                
-            });
-            pin.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent event) {
-                    setCursor(Cursor.DEFAULT);
-                }
-                
-            });
-            
             this.getChildren().add(pin);
     }
 

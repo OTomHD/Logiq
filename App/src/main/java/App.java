@@ -16,9 +16,9 @@ class App {
         sim.components.get(compID).inputPins[pinID].setState(value);
     }
 
-    public void addComponent(String Type){
-        Component comp;
-        switch (Type) {
+    public void addComponent(String type){
+        Component comp;;
+        switch (type.toLowerCase()) {
             case "node":
                 comp = new CNode("NODE", 2);
                 break;
@@ -32,7 +32,7 @@ class App {
                 comp = new CNot("NOT");
                 break;
             default:
-                System.err.print(Type+": not an implemented component type");
+                System.err.println(type+": not an implemented component type");
                 return;
         }
 
@@ -75,6 +75,10 @@ class App {
         return null;
     }
 
+    public ArrayList<Component> getComponents(){
+        return sim.components;
+    }
+
     private boolean checkValidPin(int id, Pin[] pins){
         if (id >= pins.length){
             System.err.println("Not valid Pin ID: " + id);
@@ -99,11 +103,8 @@ class App {
     }
 
 
-    private void step(){
-        if((System.currentTimeMillis() - lastStep) >= 1000) {
-            sim.step();
-            lastStep = System.currentTimeMillis();
-        }
+    public void step(){
+        sim.step();
     }
 
     private App(){
