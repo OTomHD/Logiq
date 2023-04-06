@@ -1,7 +1,7 @@
 public class COr extends Component {
 
-    COr(String name) {
-        super(name, 2, 1);
+    COr() {
+        super(2, 1);
     }
 
     @Override

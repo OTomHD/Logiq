@@ -1,7 +1,7 @@
 public class CAnd extends Component {
 
-    CAnd(String name) {
-        super(name, 2, 1);
+    CAnd() {
+        super(2, 1);
     }
 
     @Override

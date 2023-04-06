@@ -8,11 +8,6 @@ public class Controller {
     @FXML
     private Pane view;
 
-    public void node(ActionEvent event){
-        UComponent node = new UComponent(1, 2,"GRAY");
-        view.getChildren().add(node);
-        app.addComponent("node");
-    }
     public void and(ActionEvent event){
         UComponent node = new UComponent(2, 1,"GREEN");
         view.getChildren().add(node);

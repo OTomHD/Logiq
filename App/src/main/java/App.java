@@ -5,7 +5,6 @@ import java.util.ArrayList;
 class App {
     private static App app = null;
     private Simulation sim ;
-    private static long lastStep;
 
 
 // #~~~~~~~~~~~~~~~~~~~~~~Component
@@ -19,17 +18,14 @@ class App {
     public void addComponent(String type){
         Component comp;;
         switch (type.toLowerCase()) {
-            case "node":
-                comp = new CNode("NODE", 2);
-                break;
             case "and":
-                comp = new CAnd("AND");
+                comp = new CAnd();
                 break;
             case "or":
-                comp = new COr("OR");
+                comp = new COr();
                 break;
             case "not":
-                comp = new CNot("NOT");
+                comp = new CNot();
                 break;
             default:
                 System.err.println(type+": not an implemented component type");

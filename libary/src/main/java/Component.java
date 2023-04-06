@@ -1,11 +1,9 @@
 public abstract class Component{
 
-    String name;
     Pin[] inputPins;
     Pin[] outputPins;
 
-    Component(String name, int input, int output){
-        this.name = name;
+    Component(int input, int output){
         this.inputPins = new Pin[input];
         this.outputPins = new Pin[output];
         for (int i = 0; i < input; i++) {
@@ -19,6 +17,5 @@ public abstract class Component{
     public abstract void run();
 
     public Pin getConnectedTo(int pin){ return this.outputPins[pin];}
-    public String getName(){return this.name;}
     public void connect(int ID, Pin to){ this.outputPins[ID] = to;}
 }

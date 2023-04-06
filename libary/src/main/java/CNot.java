@@ -1,7 +1,7 @@
 public class CNot extends Component{
 
-    CNot(String name) {
-        super(name, 1, 1);
+    CNot() {
+        super(1, 1);
     }
 
     @Override
