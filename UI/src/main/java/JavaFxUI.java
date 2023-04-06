@@ -14,10 +14,10 @@ public class JavaFxUI extends Application{
 
     App app = App.getInstanceApp();
 
-    ArrayList<Component> comps = app.getComponents();
 
     @Override
     public void start(Stage stage){
+
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("Scenes/Main.fxml"));
@@ -26,36 +26,13 @@ public class JavaFxUI extends Application{
             root = new Group();
             e.printStackTrace();
         }
-        stage = setUp(stage, new Scene(root,1920,1080,Color.DARKGRAY));
-        System.out.println(root.getChildrenUnmodifiable()); 
-        
-        
-        stage.show();
 
-    }
-
-    private Group drawComponents(Group root){
-        for (Component comp : comps) {
-            UComponent node = new UComponent(comp.inputPins.length, comp.outputPins.length);
-            root.getChildren().add(node);
-        }
-        return root;
-    }
-
-    private void testSetUp(){
-        app.addComponent("node");
-        app.addComponent("and");
-        app.addComponent("or");
-        app.addComponent("not");
-    }
-
-    private Stage setUp(Stage stage, Scene scene){
-        stage.setScene(scene);
+        stage.setScene(new Scene(root,1920,1080,Color.DARKGRAY));
         stage.setTitle("LOGIQ - By SGTQUICK");
         stage.setMaximized(true);
         stage.setResizable(false);
         stage.getIcons().add(new Image("icon/icon.png"));
-        return stage;
+        stage.show();
     }
 
     public static void main(String[] args) {

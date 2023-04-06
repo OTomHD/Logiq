@@ -10,7 +10,7 @@ public class UComponent extends Region{
     private int size = 25;
 
 
-    public UComponent(int input, int output){
+    public UComponent(int input, int output, String color){
         int height = 0;
         if(input>output){
             height = input*size;
@@ -19,7 +19,7 @@ public class UComponent extends Region{
         }
 
 
-        Rectangle base = new Rectangle(75, height, Color.AQUA);
+        Rectangle base = new Rectangle(75, height, Color.valueOf(color));
         base.setArcHeight(20);
         base.setArcWidth(20);
 
