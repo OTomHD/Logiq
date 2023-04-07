@@ -1,13 +1,16 @@
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
+import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
-public class UComponent extends Region{
-    private int size = 25;
+public class UComponent extends Group{
+    private int size = 50;
+    private int width = size*3;
+    private double xDelta = 0;
+    private double yDelta = 0;
 
 
     public UComponent(int input, int output, String color){
@@ -18,8 +21,7 @@ public class UComponent extends Region{
             height = output*size;
         }
 
-
-        Rectangle base = new Rectangle(75, height, Color.valueOf(color));
+        Rectangle base = new Rectangle(width, height, Color.valueOf(color));
         base.setArcHeight(20);
         base.setArcWidth(20);
 
@@ -28,6 +30,7 @@ public class UComponent extends Region{
             public void handle(MouseEvent event) {
                 System.out.println("Comp Enter");
                 setCursor(Cursor.MOVE);
+                event.consume();
             }
         });
         base.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -35,14 +38,25 @@ public class UComponent extends Region{
             public void handle(MouseEvent event) {
                 System.out.println("Comp Exit");
                 setCursor(Cursor.DEFAULT);
+                event.consume();
             }
+        });
+        base.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                xDelta = getLayoutX() - event.getX();
+                yDelta = getLayoutY() - event.getY();
+            }
+            
         });
         base.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("Comp Drag2");
-                setTranslateX(event.getSceneX());
-                setTranslateY(event.getSceneY());
+                setTranslateX(event.getSceneX() + xDelta);
+                setTranslateY(event.getSceneY() + yDelta);
+                event.consume();
             }
         });
         this.getChildren().add(base);
@@ -52,7 +66,7 @@ public class UComponent extends Region{
             DrawPin(0, i);
         }
         for (int i = 1; i <= output; i++) {
-            DrawPin(75, i);
+            DrawPin(width, i);
         }
     }
 

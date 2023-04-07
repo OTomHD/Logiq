@@ -5,38 +5,38 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class UPin extends Region {
+public class UPin extends Circle {
     
     String id;
 
     UPin(double x,double y,double r,Paint fill,String id){
+        super(x, y, r, fill);
         this.id = id;
-        
-        Circle e = new Circle(x, y, r, fill);
-        e.setOnMouseDragged(new EventHandler<MouseEvent>() {
+        setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("Pin Drag");
                 event.consume();
             }
         });
-        e.setOnMouseEntered(new EventHandler<MouseEvent>() {
+        setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("Pin Enter");
                 setCursor(Cursor.OPEN_HAND);
+                event.consume();
             }
             
         });
-        e.setOnMouseExited(new EventHandler<MouseEvent>() {
+        setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("Pin Exit");
                 setCursor(Cursor.MOVE);
+                event.consume();
             }
             
         });
-        this.getChildren().add(e);
     }
 
     
