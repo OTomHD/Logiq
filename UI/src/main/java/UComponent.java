@@ -28,7 +28,6 @@ public class UComponent extends Group{
         base.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Comp Enter");
                 setCursor(Cursor.MOVE);
                 event.consume();
             }
@@ -36,7 +35,6 @@ public class UComponent extends Group{
         base.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Comp Exit");
                 setCursor(Cursor.DEFAULT);
                 event.consume();
             }
@@ -53,7 +51,6 @@ public class UComponent extends Group{
         base.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Comp Drag2");
                 setTranslateX(event.getSceneX() + xDelta);
                 setTranslateY(event.getSceneY() + yDelta);
                 event.consume();

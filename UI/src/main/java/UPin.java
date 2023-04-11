@@ -14,14 +14,12 @@ public class UPin extends Circle {
         setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Pin Drag");
                 event.consume();
             }
         });
         setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Pin Enter");
                 setCursor(Cursor.OPEN_HAND);
                 event.consume();
             }
@@ -30,7 +28,6 @@ public class UPin extends Circle {
         setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("Pin Exit");
                 setCursor(Cursor.MOVE);
                 event.consume();
             }
