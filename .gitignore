@@ -9,7 +9,3 @@ bin
 
 .idea
 .vscode
-
-
-# Temporary Ignores
-UI/src/main/resources/icon/icon.png 
