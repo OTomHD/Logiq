@@ -4,23 +4,17 @@ import javafx.scene.layout.Pane;
 
 public class Controller {
 
-    private App app = App.getInstanceApp();
+   // private App app = App.getInstanceApp();
     @FXML
     private Pane view;
 
     public void and(ActionEvent event){
-        UComponent node = new UComponent(2, 1,"GREEN");
-        view.getChildren().add(node);
-        app.addComponent("and");
+        System.out.println("AND");
     }
     public void or(ActionEvent event){
-        UComponent node = new UComponent(2, 1, "ORANGE");
-        view.getChildren().add(node);
-        app.addComponent("or");
+        System.out.println("OR");
     }
     public void not(ActionEvent event){
-        UComponent node = new UComponent(1, 1, "RED");
-        view.getChildren().add(node);
-        app.addComponent("not");
+        System.out.println("NOT");
     }
 }

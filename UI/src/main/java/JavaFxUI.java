@@ -26,7 +26,7 @@ public class JavaFxUI extends Application{
             e.printStackTrace();
         }
 
-        stage.setScene(new Scene(root,1920,1080,Color.DARKSLATEGREY));
+        stage.setScene(new Scene(root,1920,1080,Color.BLACK));
         stage.setTitle("LOGIQ - By SGTQUICK");
         stage.setMaximized(true);
         stage.setResizable(false);
