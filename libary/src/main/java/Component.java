@@ -18,4 +18,5 @@ public abstract class Component{
 
     public Pin getConnectedTo(int pin){ return this.outputPins[pin];}
     public void connect(int ID, Pin to){ this.outputPins[ID] = to;}
+    public void disconnect(int ID){this.outputPins[ID] = new Pin();}
 }

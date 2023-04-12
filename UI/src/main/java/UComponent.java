@@ -1,3 +1,5 @@
+import java.util.UUID;
+
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -22,9 +24,12 @@ public class UComponent extends Group{
         }
 
         Rectangle base = new Rectangle(width, height, Color.valueOf(color));
+        //base.setId(UUID.randomUUID().toString());
         base.setArcHeight(20);
         base.setArcWidth(20);
 
+
+        // Set Mouse ICon for mouse over and not over
         base.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -39,8 +44,9 @@ public class UComponent extends Group{
                 event.consume();
             }
         });
-        base.setOnMousePressed(new EventHandler<MouseEvent>() {
 
+        // Get mouse to Component delta and make component dragable
+        base.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 xDelta = getLayoutX() - event.getX();
@@ -56,8 +62,9 @@ public class UComponent extends Group{
                 event.consume();
             }
         });
-        this.getChildren().add(base);
 
+
+        this.getChildren().add(base);
 
         for (int i = 1; i <= input; i++) {
             DrawPin(0, i);
@@ -68,8 +75,7 @@ public class UComponent extends Group{
     }
 
     public void DrawPin(double x, int i){
-        UPin pin = new UPin(x, (i*size)-(size/2), size/3, Color.WHITE,"Test");
+        UPin pin = new UPin(x, (i*size)-(size/2), size/3, Color.WHITE);
             this.getChildren().add(pin);
     }
-
 }

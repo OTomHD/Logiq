@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <Pane fx:id="view" layoutX="12.0" layoutY="15.0" prefHeight="936.0" prefWidth="1895.0" />
+      <Pane fx:id="view" layoutX="12.0" layoutY="15.0" prefHeight="936.0" prefWidth="1895.0" style="-fx-background-color: DarkGrey;" />
       <Button layoutX="233.0" layoutY="963.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="216.0" text="Splitter" />
       <Button layoutX="658.0" layoutY="963.0" mnemonicParsing="false" onAction="#and" prefHeight="80.0" prefWidth="216.0">
          <graphic>
