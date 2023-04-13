@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
-
+enum Components{
+    AND,
+    OR,
+    NOT
+}
 
 class App {
     private static App app = null;
@@ -15,24 +20,25 @@ class App {
         sim.components.get(compID).inputPins[pinID].setState(value);
     }
 
-    public void addComponent(String type){
+    public String addComponent(Components type){
         Component comp;;
-        switch (type.toLowerCase()) {
-            case "and":
+        switch (type) {
+            case AND:
                 comp = new CAnd();
                 break;
-            case "or":
+            case OR:
                 comp = new COr();
                 break;
-            case "not":
+            case NOT:
                 comp = new CNot();
                 break;
             default:
                 System.err.println(type+": not an implemented component type");
-                return;
+                return null;
         }
-
+        comp.setID(UUID.randomUUID().toString());
         sim.addComponent(comp);
+        return comp.getID();
         
     }
 
