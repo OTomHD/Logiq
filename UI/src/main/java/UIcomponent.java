@@ -1,20 +1,24 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
-import javax.xml.transform.Source;
-
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 public class UIcomponent extends AnchorPane {
@@ -85,7 +89,24 @@ public class UIcomponent extends AnchorPane {
             @Override
             public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
-                System.out.println(db.getString());
+                String SourceID = db.getString();
+                Circle Source = null;
+                for (Node comp : getParent().getChildrenUnmodifiable()) {
+                    Parent newComp;
+                    if (comp instanceof Parent){
+                        newComp = (Parent) comp; 
+                    }else{
+                        continue;
+                    }
+                    for (Node node : newComp.getChildrenUnmodifiable()) {
+                        if(SourceID == node.getId() && node instanceof Circle){
+                            Source = (Circle)node;
+                            System.out.println(node.localToScene(getBoundsInLocal()).getCenterX());
+                            System.out.println(Source.localToScene(getBoundsInLocal()).getCenterX());
+                            Source.getLocalToSceneTransform().
+                        }
+                    }
+                }
                 event.consume(); 
             }
 
