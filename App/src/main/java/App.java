@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.UUID;
 
 enum ComponentType{
@@ -16,8 +15,10 @@ class App {
     public static void main(String[] args) {
         view.load();
         while(!view.shouldClose()){
-            view.render(sim.components);
+            step();
         }
+        close();
+        
         
     }
 
@@ -67,8 +68,13 @@ class App {
     }
 
 
-    public void step(){
+    public static void step(){
+        view.render(getSimulation().getComponents());
         sim.step();
+    }
+
+    public static void close(){
+        view.close();
     }
 
     private App(){
