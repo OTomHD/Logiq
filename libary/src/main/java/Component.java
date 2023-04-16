@@ -3,12 +3,12 @@ public abstract class Component{
     public Pin[] inputPins;
     public Pin[] outputPins;
 
-    public double posX;
-    public double posY;
+    public int posX;
+    public int posY;
     
     private String id=null;
 
-    Component(int input, int output,double x, double y){
+    Component(int input, int output,int x, int y){
         posX = x;
         posY = y;
         this.inputPins = new Pin[input];
@@ -23,6 +23,9 @@ public abstract class Component{
 
     public abstract void run();
 
+    public int largestPinArray(){
+        return inputPins.length > outputPins.length ? inputPins.length : outputPins.length;
+    }
 
     public Pin[] getOutPins(){
         return outputPins;
@@ -31,10 +34,10 @@ public abstract class Component{
         return inputPins;
     }
 
-    public void setX(double x){ posX = x; }
-    public void setY(double y){ posY = y; }
-    public double getX(){ return posX; }
-    public double getY(){ return posY; }
+    public void setX(int x){ posX = x; }
+    public void setY(int y){ posY = y; }
+    public int getX(){ return posX; }
+    public int getY(){ return posY; }
 
     public void setID(String newID){ id = newID; }
     public String getID(){ return id; }

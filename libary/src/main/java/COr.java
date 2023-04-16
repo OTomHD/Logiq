@@ -1,6 +1,6 @@
 public class COr extends Component {
 
-    COr(double x, double y) {
+    COr(int x, int y) {
         super(2, 1, x, y);
     }
 

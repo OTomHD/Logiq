@@ -1,6 +1,6 @@
 public class CNot extends Component{
 
-    CNot(double x, double y) {
+    CNot(int x, int y) {
         super(1, 1, x , y);
     }
 

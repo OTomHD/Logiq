@@ -14,7 +14,7 @@ dependencies {
     implementation 'uk.co.electronstudio.jaylib:jaylib:4.2.+'
 
     implementation project(':libary')
-    
+
 }
 
 

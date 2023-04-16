@@ -1,19 +1,14 @@
 import java.util.UUID;
 
-enum ComponentType{
-    AND,
-    OR,
-    NOT
-}
-
 class App {
-    private static App app = null;
+    private static App app = App.getInstanceApp();
     private static Simulation sim ;
     private static UI view = new RaylibUI();
 
 
     public static void main(String[] args) {
         view.load();
+        app.debugSetup();
         while(!view.shouldClose()){
             step();
         }
@@ -30,7 +25,7 @@ class App {
 
 // #~~~~~~~~~~~~~~~~~~~~~~Component
 
-    public String addComponent(ComponentType type, double posX, double posY){
+    public String addComponent(ComponentType type, int posX, int posY){
         Component comp;;
         switch (type) {
             case AND:
@@ -58,7 +53,6 @@ class App {
     public static App getInstanceApp() {
         if (app == null){
             app = new App();
-            sim = new Simulation(8, 8);
         }
         return app;
     }
@@ -78,5 +72,6 @@ class App {
     }
 
     private App(){
+        sim =  new Simulation(8, 8);
     }
 }

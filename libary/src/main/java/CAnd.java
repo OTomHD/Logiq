@@ -1,6 +1,6 @@
 public class CAnd extends Component {
 
-    CAnd(double x, double y) {
+    CAnd(int x, int y) {
         super(2, 1,x, y);
     }
 
