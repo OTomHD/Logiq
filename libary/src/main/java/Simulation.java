@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Simulation {
+public class Simulation implements Serializable {
     Pin[] inputPins;
     ArrayList<Component> components = new ArrayList<Component>();
     Pin[] outputPins;
@@ -19,6 +20,8 @@ public class Simulation {
         
     }
 
+    
+
     public void step(){
         for (Component component:components) {
             component.run();
@@ -27,18 +30,10 @@ public class Simulation {
 
     public void addComponent(Component component){
         components.add(component);}
-
-    public void setPin(int id, boolean state){
-        this.inputPins[id].setState(state);
-    }
-
-    public void connect(int ID, Pin pin, boolean input){
-        if (input){ 
-            inputPins[ID] = pin;
-            return;
+    
+    public void subComponent(Component component){
+        if(components.contains(component)){
+            components.remove(component);
         }
-        outputPins[ID] = pin;
-        return;
     }
-
 }
