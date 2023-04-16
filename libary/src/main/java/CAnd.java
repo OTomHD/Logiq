@@ -1,7 +1,7 @@
 public class CAnd extends Component {
 
-    CAnd() {
-        super(2, 1);
+    CAnd(double x, double y) {
+        super(2, 1,x, y);
     }
 
     @Override

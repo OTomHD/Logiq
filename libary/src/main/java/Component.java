@@ -8,19 +8,6 @@ public abstract class Component{
     
     private String id=null;
 
-    Component(int input, int output){
-        posX = 0;
-        posY = 0;
-        this.inputPins = new Pin[input];
-        this.outputPins = new Pin[output];
-        for (int i = 0; i < input; i++) {
-            this.inputPins[i] = new Pin();
-        }
-        for (int i = 0; i < output; i++) {
-            this.outputPins[i] = new Pin();
-        }
-    }
-
     Component(int input, int output,double x, double y){
         posX = x;
         posY = y;

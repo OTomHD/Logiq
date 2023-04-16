@@ -1,7 +1,7 @@
 public class COr extends Component {
 
-    COr() {
-        super(2, 1);
+    COr(double x, double y) {
+        super(2, 1, x, y);
     }
 
     @Override

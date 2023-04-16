@@ -1,7 +1,7 @@
 public class CNot extends Component{
 
-    CNot() {
-        super(1, 1);
+    CNot(double x, double y) {
+        super(1, 1, x , y);
     }
 
     @Override
