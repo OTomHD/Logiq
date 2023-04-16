@@ -20,7 +20,16 @@ public class Simulation implements Serializable {
         
     }
 
-    
+    public Pin[] getInPins(){
+        return inputPins;
+    }
+    public Pin[] getOutPins(){
+        return outputPins;
+    }
+
+    public ArrayList<Component> getComponents(){
+        return this.components;
+    }
 
     public void step(){
         for (Component component:components) {
@@ -34,6 +43,8 @@ public class Simulation implements Serializable {
     public void subComponent(Component component){
         if(components.contains(component)){
             components.remove(component);
+        }else{
+            System.err.println("[Simulation] ~ Component not in component List");
         }
     }
 }
