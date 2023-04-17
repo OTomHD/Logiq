@@ -21,6 +21,9 @@ class App {
         app.addComponent(ComponentType.AND, 100, 10);
         app.addComponent(ComponentType.OR, 100, 200);
         app.addComponent(ComponentType.NOT, 100, 400);
+
+        app.addComponent(ComponentType.AND, 500, 200);
+        getSimulation().getComponents().get(1).getOutPins()[0].connect(getSimulation().getComponents().get(3).getInPins()[0]);
     }
 
 // #~~~~~~~~~~~~~~~~~~~~~~Component

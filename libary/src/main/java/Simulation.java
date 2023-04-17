@@ -10,12 +10,12 @@ public class Simulation implements Serializable {
 
         this.inputPins = new Pin[inSize];
         for (int index = 0; index < inputPins.length; index++) {
-            inputPins[index] = new Pin();
+            inputPins[index] = new Pin(index);
         }
 
         this.outputPins = new Pin[outSize];
         for (int index = 0; index < outputPins.length; index++) {
-            outputPins[index] = new Pin();
+            outputPins[index] = new Pin(index);
         }
         
     }
