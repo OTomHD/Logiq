@@ -3,23 +3,28 @@ public class Pin {
     Pin connectedTo = null;
     Component parent;
     int index;
+    Point position;
+    PinType pinType;
 
-    Pin(int index,boolean state, Component parent){
+
+    Pin(int index,PinType type,boolean state, Component parent){
         this.index = index;
         this.state = state;
         this.parent = parent;
+        this.pinType = type;
+        int x = this.pinType==PinType.INPUT ? 0 : 1;
+        int y = this.index+1;
+        position =  new Point(x, y);
     }
-    Pin(int index,boolean state){
-        this(index,state,null);
+    Pin(int index,PinType type,boolean state){
+        this(index,type,state,null);
     }
-    Pin(int index,Component parent){
-        this(index,false, parent);
+    Pin(int index,PinType type,Component parent){
+        this(index,type,false, parent);
     }
-    Pin(int index){
-        this(index,false,null);
+    Pin(int index,PinType type){
+        this(index,type,false,null);
     }
-
-
 
 
     public void connect(Pin inputPin){
@@ -48,5 +53,9 @@ public class Pin {
         if(!(connectedTo == null)){
             connectedTo.setState(state);
         }
+    }
+
+    public Point getPosition(){
+        return position;
     }
 }

@@ -1,23 +1,23 @@
 public abstract class Component{
 
-    public Pin[] inputPins;
-    public Pin[] outputPins;
+    private Pin[] inputPins;
+    private Pin[] outputPins;
 
-    public int posX;
-    public int posY;
-    
+    private Point position;
     private String id=null;
+    private ComponentType compType;
 
-    Component(int input, int output,int x, int y){
-        posX = x;
-        posY = y;
+    Component(int input, int output,int x, int y, ComponentType type){
+        this.position = new Point(x, y);
+
         this.inputPins = new Pin[input];
         this.outputPins = new Pin[output];
+        this.compType = type;
         for (int i = 0; i < input; i++) {
-            this.inputPins[i] = new Pin(i,this);
+            this.inputPins[i] = new Pin(i,PinType.INPUT,this);
         }
         for (int i = 0; i < output; i++) {
-            this.outputPins[i] = new Pin(i,this);
+            this.outputPins[i] = new Pin(i,PinType.OUTPUT,this);
         }
     }
 
@@ -34,10 +34,13 @@ public abstract class Component{
         return inputPins;
     }
 
-    public void setX(int x){ posX = x; }
-    public void setY(int y){ posY = y; }
-    public int getX(){ return posX; }
-    public int getY(){ return posY; }
+    public Point getPosition(){
+        return position;
+    }
+
+    public ComponentType getComponentType(){
+        return compType;
+    }
 
     public void setID(String newID){ id = newID; }
     public String getID(){ return id; }
