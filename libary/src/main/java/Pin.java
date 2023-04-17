@@ -1,13 +1,24 @@
 public class Pin {
     boolean state;
     Pin connectedTo = null;
+    Component parent;
 
-    Pin(){
-        this.state = false;
+    Pin(boolean state, Component parent){
+        this.state = state;
+        this.parent = parent;
     }
     Pin(boolean state){
-        this.state = state;
+        this(state,null);
     }
+    Pin(Component parent){
+        this(false, parent);
+    }
+    Pin(){
+        this(false,null);
+    }
+
+
+
 
     public void connect(Pin inputPin){
         connectedTo = inputPin;
@@ -20,6 +31,10 @@ public class Pin {
 
     public boolean getState() {
         return state;
+    }
+
+    public Component getParent(){
+        return parent;
     }
     
     public void setState(boolean state) {
