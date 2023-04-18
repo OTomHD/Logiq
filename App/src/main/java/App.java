@@ -4,12 +4,16 @@ class App {
     private static App app = App.getInstanceApp();
     private static Simulation sim ;
     private static UI view = new RaylibUI();
+    private static CommandHelper helper = CommandHelper.getInstance();
+    private static boolean shouldClose = false;
 
 
     public static void main(String[] args) {
         view.load();
         app.debugSetup();
-        while(!view.shouldClose()){
+        helper.setThread(new Thread(helper)); 
+        helper.getThread().start();
+        while(!view.shouldClose() && !shouldClose){
             step();
         }
         close();
@@ -89,27 +93,37 @@ class App {
     }
 
 
-
-// #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Class
-    public static App getInstanceApp() {
-        if (app == null){
-            app = new App();
-        }
-        return app;
-    }
-
     public static Simulation getSimulation(){
         return sim;
     }
 
 
     public static void step(){
-        view.render(getSimulation().getComponents(),getSimulation().getInPins(),getSimulation().getOutPins());
         sim.step();
+        view.render(getSimulation().getComponents(),getSimulation().getInPins(),getSimulation().getOutPins());
+        
     }
 
     public static void close(){
+        shouldClose = true;
         view.close();
+        helper.printAllCommands();
+        helper.getThread().interrupt();
+        //System.out.println("Press ENTER to close");
+    }
+
+
+//~~~~~~~~~~~~~Class~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    public boolean ShouldClose(){
+        return shouldClose;
+    }
+
+    public static App getInstanceApp() {
+        if (app == null){
+            app = new App();
+        }
+        return app;
     }
 
     private App(){
