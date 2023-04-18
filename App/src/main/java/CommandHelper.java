@@ -25,13 +25,14 @@ public class CommandHelper implements Runnable {
         for (String stringCommand : newCommmands) {
             String[] command = stringCommand.split(" ");
             Command cmd;
-            switch (command[0]) {
+            switch (command[0].toLowerCase()) {
                 case "toggle":
                     if(!(command.length == 2)){
                         System.out.println("Incorrect amount of arguments for connect command needed 1");
                         System.out.println("Example - toggle SimulationInputPinNumber");
                         return;
                     }
+                    cmd = new ToggleCommand();
                     break;
 
                 case "add":
@@ -40,6 +41,7 @@ public class CommandHelper implements Runnable {
                         System.out.println("Example - add ComponentName ComponentType ComponentX ComponentY");
                         return;
                     }
+                    cmd = new AddCommand();
                     break;
 
                 case "connect":
@@ -48,6 +50,7 @@ public class CommandHelper implements Runnable {
                         System.out.println("Example - connect ComponentFromName FromPinNumber ComponentToName ToPinNumber");
                         return;
                     }
+                    cmd = new ConnectCommand();
                     break;
 
                 case "move":
@@ -56,6 +59,7 @@ public class CommandHelper implements Runnable {
                         System.out.println("Example - move ComponentName ComponentX ComponentY");
                         return;
                     }
+                    cmd = new MoveCommand();
                     break;
                     
                 default:
