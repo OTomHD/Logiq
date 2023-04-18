@@ -16,7 +16,7 @@ class App {
         while(!view.shouldClose() && !shouldClose){
             step();
         }
-        close();
+        internalClose();
         
         
     }
@@ -68,7 +68,12 @@ class App {
         
     }
 
-// #~~~~~~~~~~~~~~~~~~~~~~Component
+
+
+//~~~~~~~~~~~~~~~~~~~~~~Commands~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+    public void toggle(Pin pin){
+        pin.setState(!pin.getState());
+    }
 
     public String addComponent(ComponentType type, int posX, int posY){
         Component comp;;
@@ -83,7 +88,7 @@ class App {
                 comp = new CNot(posX, posY);
                 break;
             default:
-                System.err.println(type+": not an implemented component type");
+                System.err.println("[App] - "+type+": not an implemented component type");
                 return null;
         }
         comp.setID(UUID.randomUUID().toString());
@@ -92,31 +97,47 @@ class App {
         
     }
 
+    public void connect(Pin pin1, Pin pin2){
+        if(pin1.getType() == PinType.INPUT){
+            pin1.connect(pin2);
+        }else{
+            pin2.connect(pin1);
+        }
+    }
 
+
+    public void moveComponent(Component component, int newXPos, int newYPos){
+        component.getPosition().setX(newXPos);
+        component.getPosition().setY(newYPos);
+    }
+
+//~~~~~~~~~~~~Simulation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
     public static Simulation getSimulation(){
         return sim;
     }
 
 
-    public static void step(){
+    private static void step(){
         sim.step();
         view.render(getSimulation().getComponents(),getSimulation().getInPins(),getSimulation().getOutPins());
         
     }
 
-    public static void close(){
+//~~~~~~~~~~~~~Class~~~~~~~~~~~~~~~~~//
+
+    public boolean ShouldClose(){
+        return shouldClose;
+    }
+
+    private static void internalClose(){
         shouldClose = true;
         view.close();
         helper.printAllCommands();
         helper.getThread().interrupt();
-        //System.out.println("Press ENTER to close");
     }
 
-
-//~~~~~~~~~~~~~Class~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-    public boolean ShouldClose(){
-        return shouldClose;
+    public void close(){
+        shouldClose = true;
     }
 
     public static App getInstanceApp() {

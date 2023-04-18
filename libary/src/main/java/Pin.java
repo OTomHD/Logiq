@@ -58,4 +58,8 @@ public class Pin {
     public Point getPosition(){
         return position;
     }
+
+    public PinType getType(){
+        return pinType;
+    }
 }

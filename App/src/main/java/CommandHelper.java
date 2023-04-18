@@ -18,14 +18,52 @@ public class CommandHelper implements Runnable {
         }
     }
 
-/*     private void parseCommands(){
+     private void parseCommands(){
         if (newCommmands.isEmpty()) {
             return;
         }
         for (String stringCommand : newCommmands) {
-            
+            String[] command = stringCommand.split(" ");
+            Command cmd;
+            switch (command[0]) {
+                case "toggle":
+                    if(!(command.length == 2)){
+                        System.out.println("Incorrect amount of arguments for connect command needed 1");
+                        System.out.println("Example - toggle SimulationInputPinNumber");
+                        return;
+                    }
+                    break;
+
+                case "add":
+                    if(!(command.length == 5)){
+                        System.out.println("Incorrect amount of arguments for add command needed 4");
+                        System.out.println("Example - add ComponentName ComponentType ComponentX ComponentY");
+                        return;
+                    }
+                    break;
+
+                case "connect":
+                    if(!(command.length == 5)){
+                        System.out.println("Incorrect amount of arguments for connect command needed 4");
+                        System.out.println("Example - connect ComponentFromName FromPinNumber ComponentToName ToPinNumber");
+                        return;
+                    }
+                    break;
+
+                case "move":
+                    if(!(command.length == 4)){
+                        System.out.println("Incorrect amount of arguments for move command needed 3");
+                        System.out.println("Example - move ComponentName ComponentX ComponentY");
+                        return;
+                    }
+                    break;
+                    
+                default:
+                    System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
+                    break;
+            }
         }
-    } */
+    }
 
     @Override
     public void run() {
@@ -46,7 +84,7 @@ public class CommandHelper implements Runnable {
                 System.out.println("Closeing command line...");
                 continue;
             }catch (IOException e) {
-                System.err.println("IOException");
+                System.err.println("[CommandHelper] - IOException");
                 e.printStackTrace();
             }
         }
