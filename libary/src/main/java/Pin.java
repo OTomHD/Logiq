@@ -28,12 +28,17 @@ public class Pin {
 
 
     public void connect(Pin inputPin){
-        connectedTo = inputPin;
+        setConnected(inputPin);
+        connectedTo.setConnected(this);
         connectedTo.setState(this.getState());
     }
 
     public Pin getConnected(){
         return connectedTo;
+    }
+    
+    public void setConnected(Pin pin){
+        connectedTo = pin;
     }
 
     public boolean getState() {
@@ -48,10 +53,10 @@ public class Pin {
         return index;
     }
     
-    public void setState(boolean state) {
+    public void setState(boolean state, int... r) {
         this.state = state;
-        if(!(connectedTo == null)){
-            connectedTo.setState(state);
+        if(!(connectedTo == null) && !(r.length>0)){
+            connectedTo.setState(state, 1);
         }
     }
 

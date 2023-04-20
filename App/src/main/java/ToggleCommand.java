@@ -1,9 +1,20 @@
 public class ToggleCommand extends Command {
+    String sign = "CMD -> int\n";
+    String example = "toggle SimulationPinNumber - Example\n";
+
+
+    int simPinNumber;
+
+    public ToggleCommand(int simPinNumber){
+        super();
+        this.simPinNumber = simPinNumber;
+    }
+
+
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'execute'");
+        App.getInstanceApp().toggle(simPinNumber);
     }
     
 }
