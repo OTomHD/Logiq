@@ -1,3 +1,7 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.NotSerializableException;
+import java.io.ObjectOutputStream;
 import java.lang.Thread.State;
 
 class App {
@@ -59,6 +63,20 @@ class App {
     public void moveComponent(Component component, int newXPos, int newYPos){
         component.getPosition().setX(newXPos);
         component.getPosition().setY(newYPos);
+    }
+
+    public void save(String filePath){
+        try {
+            FileOutputStream fileOut = new FileOutputStream(filePath);
+            ObjectOutputStream ObjOut = new ObjectOutputStream(fileOut);
+            ObjOut.writeObject(getSimulation());
+            ObjOut.close();
+            System.out.println("Simulation was succesfully saved to: "+ filePath);
+        } catch (NotSerializableException e) {
+            System.err.println("Something in the simulation is not serializable");
+        } catch (IOException e){
+            System.err.println("There was an error saving the Simulation");
+        }
     }
 
 //~~~~~~~~~~~~Simulation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//

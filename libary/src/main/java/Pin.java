@@ -1,4 +1,6 @@
-public class Pin {
+import java.io.Serializable;
+
+public class Pin implements Serializable{
     boolean state;
     Pin connectedTo = null;
     Component parent;

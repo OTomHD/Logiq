@@ -1,4 +1,6 @@
-public abstract class Component{
+import java.io.Serializable;
+
+public abstract class Component implements Serializable{
 
     private Pin[] inputPins;
     private Pin[] outputPins;

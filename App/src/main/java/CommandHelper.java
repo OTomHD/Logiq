@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class CommandHelper implements Runnable {
 
@@ -59,22 +57,22 @@ public class CommandHelper implements Runnable {
             Command cmd;
             switch (command[0].toLowerCase()) {
                 case "toggle":
-                if (!(command.length == 2)) {
-                    System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:1");
-                    continue;
-                }
+                    if (!(command.length == 2)) {
+                        System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:1");
+                        continue;
+                    }
 
-                int simPinNumber;
-                try {
-                    simPinNumber = Integer.parseInt(command[1]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/toggle] - Incompatiable type for variable SimulationInputPinNumber");
-                    continue;
-                }
-                if (simPinNumber>8 || simPinNumber<0) {
-                    System.err.println("[CommandHelper/toggle] - No Simulation pin with id"+simPinNumber);
-                    continue;
-                }
+                    int simPinNumber;
+                    try {
+                        simPinNumber = Integer.parseInt(command[1]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/toggle] - Incompatiable type for variable SimulationInputPinNumber");
+                        continue;
+                    }
+                    if (simPinNumber>8 || simPinNumber<0) {
+                        System.err.println("[CommandHelper/toggle] - No Simulation pin with id"+simPinNumber);
+                        continue;
+                    }
                     cmd = new ToggleCommand(simPinNumber);
                     break;
 
@@ -82,39 +80,39 @@ public class CommandHelper implements Runnable {
 
 
                 case "add":
-                if (!(command.length == 5)) {
-                    System.out.println("Wrong argument count, is:"+(command.length-1)+" Should be:4");
-                    continue;
-                }
+                    if (!(command.length == 5)) {
+                        System.out.println("Wrong argument count, is:"+(command.length-1)+" Should be:4");
+                        continue;
+                    }
 
-                String componentName = command[1];
+                    String componentName = command[1];
 
-                
-                ComponentType type;
-                try {
-                    type = ComponentType.valueOf(command[2].toUpperCase());
-                } catch (Exception e) {
-                    System.err.println("[CommandHelper/add] - invalid Argument ComponentType");
-                    continue;
-                }
-                
+                    
+                    ComponentType type;
+                    try {
+                        type = ComponentType.valueOf(command[2].toUpperCase());
+                    } catch (Exception e) {
+                        System.err.println("[CommandHelper/add] - invalid Argument ComponentType");
+                        continue;
+                    }
+                    
 
-                int x;
-                try {
-                    x = Integer.parseInt(command[3]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/add] - Incompatiable type for variable ComponentX");
-                    continue;
-                }
-        
+                    int x;
+                    try {
+                        x = Integer.parseInt(command[3]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/add] - Incompatiable type for variable ComponentX");
+                        continue;
+                    }
+            
 
-                int y;
-                try {
-                    y = Integer.parseInt(command[4]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/add] - Incompatiable type for variable ComponentY");
-                    continue;
-                }
+                    int y;
+                    try {
+                        y = Integer.parseInt(command[4]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/add] - Incompatiable type for variable ComponentY");
+                        continue;
+                    }
                     cmd = new AddCommand(componentName, type, x, y);
                     break;
 
@@ -122,47 +120,47 @@ public class CommandHelper implements Runnable {
 
 
                 case "connect":
-                if (!(command.length == 7)) {
-                    System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:6");
-                    continue;
-                }
+                    if (!(command.length == 7)) {
+                        System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:6");
+                        continue;
+                    }
 
-                String fromComponentName = command[1];
-        
-                int fromPinNumber;
-                try {
-                    fromPinNumber = Integer.parseInt(command[2]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/connect] - Incompatiable type for variable FromPinNumber");
+                    String fromComponentName = command[1];
+            
+                    int fromPinNumber;
+                    try {
+                        fromPinNumber = Integer.parseInt(command[2]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/connect] - Incompatiable type for variable FromPinNumber");
+                        continue;
+                    }
+            
+                    PinType fromPinType;
+                    try {
+                        fromPinType = PinType.valueOf(command[3]);
+                    } catch (IllegalArgumentException e) {
+                        System.err.println("[CommandHelper/connect] - Incompatiable type for variable ToPinNumber");
+                        continue;
+                    }
+            
+            
+                    String toComponentName = command[4];
+            
+                    int toPinNumber;
+                    try {
+                        toPinNumber = Integer.parseInt(command[5]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/connect] - Incompatiable type for variable ToPinNumber");
+                        continue;
+                    }
+                    
+                    PinType toPinType;
+                    try {
+                        toPinType = PinType.valueOf(command[6]);
+                    } catch (IllegalArgumentException e) {
+                    System.err.println("[CommandHelper/connect] - Incompatible type for variable ToPinType");
                     continue;
-                }
-        
-                PinType fromPinType;
-                try {
-                    fromPinType = PinType.valueOf(command[3]);
-                } catch (IllegalArgumentException e) {
-                    System.err.println("[CommandHelper/connect] - Incompatiable type for variable ToPinNumber");
-                    continue;
-                }
-        
-        
-                String toComponentName = command[4];
-        
-                int toPinNumber;
-                try {
-                    toPinNumber = Integer.parseInt(command[5]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/connect] - Incompatiable type for variable ToPinNumber");
-                    continue;
-                }
-                
-                PinType toPinType;
-                try {
-                    toPinType = PinType.valueOf(command[6]);
-                } catch (IllegalArgumentException e) {
-                   System.err.println("[CommandHelper/connect] - Incompatible type for variable ToPinType");
-                   continue;
-                }
+                    }
 
                     cmd = new ConnectCommand(fromComponentName, fromPinNumber, fromPinType, toComponentName, toPinNumber, toPinType);
                     break;
@@ -171,39 +169,48 @@ public class CommandHelper implements Runnable {
 
 
                 case "move":
-                if (!(command.length == 4)) {
-                    System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:3");
-                    continue;
-                }
+                    if (!(command.length == 4)) {
+                        System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:3");
+                        continue;
+                    }
 
 
-                String componentNameMove = command[1];
+                    String componentNameMove = command[1];
 
-                int xMove;
-                try {
-                    xMove = Integer.parseInt(command[2]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/move] - Incompatiable type for variable ComponentX");
-                    continue;
-                }
-        
-                int yMove;
-                try {
-                    yMove = Integer.parseInt(command[3]);
-                } catch (NumberFormatException e) {
-                    System.err.println("[CommandHelper/move] - Incompatiable type for variable ComponentY");
-                    continue;
-                }
+                    int xMove;
+                    try {
+                        xMove = Integer.parseInt(command[2]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/move] - Incompatiable type for variable ComponentX");
+                        continue;
+                    }
+            
+                    int yMove;
+                    try {
+                        yMove = Integer.parseInt(command[3]);
+                    } catch (NumberFormatException e) {
+                        System.err.println("[CommandHelper/move] - Incompatiable type for variable ComponentY");
+                        continue;
+                    }
 
                     cmd = new MoveCommand(componentNameMove, xMove, yMove);
                     break;
+                
+                case "save":
+                    if (!(command.length == 2)) {
+                        System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:1");
+                        continue;
+                    }
+
+                    String filePathSave = command[1];
+
+                    cmd = new saveCommand(filePathSave);
+                    break;
+
                     
-
-
-
                 default:
-                    System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
-                    continue;
+                System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
+                continue;
             }
             cmd.execute();
         }
