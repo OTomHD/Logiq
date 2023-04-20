@@ -207,7 +207,16 @@ public class CommandHelper implements Runnable {
                     cmd = new saveCommand(filePathSave);
                     break;
 
+                case "load":
+                    if (!(command.length == 2)) {
+                        System.err.println("Wrong argument count, is:"+(command.length-1)+" Should be:1");
+                        continue;
+                    }
+
+                    String filePathLoad = command[1];
                     
+                    cmd = new LoadCommand(filePathLoad);
+                    break;
                 default:
                 System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
                 continue;

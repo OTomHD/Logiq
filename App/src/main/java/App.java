@@ -1,6 +1,8 @@
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.NotSerializableException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.Thread.State;
 
@@ -76,6 +78,17 @@ class App {
             System.err.println("Something in the simulation is not serializable");
         } catch (IOException e){
             System.err.println("There was an error saving the Simulation");
+        }
+    }
+
+    public void load(String filePath){
+        try {
+            FileInputStream fileIn = new FileInputStream(filePath);
+            ObjectInputStream objIn = new ObjectInputStream(fileIn);
+            sim = (Simulation) objIn.readObject();
+            objIn.close();
+        } catch (Exception e) {
+            System.err.println("An error occured while loading the simulation");
         }
     }
 
