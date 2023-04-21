@@ -68,7 +68,8 @@ public class RaylibUI implements UI {
             int outlinesize = size/10;
             DrawRectangle(comp.getPosition().getX(), comp.getPosition().getY(), size*3, size*comp.largestPinArray(), BLACK); // Drawing OutLine
             DrawRectangle(comp.getPosition().getX()+outlinesize, comp.getPosition().getY()+outlinesize, size*3-(outlinesize*2), size*comp.largestPinArray()-(outlinesize*2), pickColor(comp.getComponentType())); // Draw Component Base
-            
+            DrawText(comp.getID(), comp.getPosition().getX()+outlinesize+(outlinesize/2), comp.getPosition().getY()+outlinesize+(outlinesize/2), size/4, WHITE);
+        
             drawPins(comp.getInPins(), pinSize); // Draw Input Pins
             drawPins(comp.getOutPins(), pinSize); // Draw Output Pins
         }
