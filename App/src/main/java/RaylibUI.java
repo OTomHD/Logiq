@@ -18,7 +18,7 @@ import static com.raylib.Jaylib.ORANGE;
 
 public class RaylibUI implements UI {
 
-    int size = 50;
+    int size = 75;
 
     int SCREENWIDTH = 1920;
     int SCREENHEIGHT = 1080;
@@ -29,11 +29,11 @@ public class RaylibUI implements UI {
     public void load() {
         InitWindow(SCREENWIDTH, SCREENHEIGHT, "Logiq");
         SetTargetFPS(30);
-        textureMap.put("AND", LoadTexture("src/main/resources/AND.png"));
-        textureMap.put("NOT", LoadTexture("src/main/resources/NOT.png"));
-        textureMap.put("OR", LoadTexture("src/main/resources/OR.png"));
-        textureMap.put("Unknown", LoadTexture("src/main/resources/Unknown.png"));
-        SetWindowIcon(LoadImage("src/main/resources/Icon.png"));
+        textureMap.put("AND", LoadTexture("AND.png"));
+        textureMap.put("NOT", LoadTexture("NOT.png"));
+        textureMap.put("OR", LoadTexture("OR.png"));
+        textureMap.put("Unknown", LoadTexture("Unknown.png"));
+        SetWindowIcon(LoadImage("Icon.png"));
     }
 
     @Override
@@ -121,7 +121,7 @@ public class RaylibUI implements UI {
         }else{ // Simulation Pins
             vector.x(pin.getPosition().getX()*SCREENWIDTH);
             vector.y(pin.getPosition().getY()*(SCREENHEIGHT/8)-((SCREENHEIGHT/8)/2));
-        } //((pin.getPosition().getY()*size)*(SCREENHEIGHT/1000)*(float)1.6)
+        } 
         return vector;
     }
 
