@@ -18,7 +18,7 @@ import static com.raylib.Jaylib.ORANGE;
 
 public class RaylibUI implements UI {
 
-    int size = 75;
+    int size = 50;
 
     int SCREENWIDTH = 1920;
     int SCREENHEIGHT = 1080;
@@ -120,8 +120,8 @@ public class RaylibUI implements UI {
             vector.y(pin.getParent().getPosition().getY()+((size*pin.getPosition().getY())-(size/2)));
         }else{ // Simulation Pins
             vector.x(pin.getPosition().getX()*SCREENWIDTH);
-            vector.y(((pin.getPosition().getY()*size)*(SCREENHEIGHT/1000)*(float)1.6));
-        }
+            vector.y(pin.getPosition().getY()*(SCREENHEIGHT/8)-((SCREENHEIGHT/8)/2));
+        } //((pin.getPosition().getY()*size)*(SCREENHEIGHT/1000)*(float)1.6)
         return vector;
     }
 
