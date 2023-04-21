@@ -1,4 +1,5 @@
 // import List types
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,11 +30,11 @@ public class RaylibUI implements UI {
     public void load() {
         InitWindow(SCREENWIDTH, SCREENHEIGHT, "Logiq");
         SetTargetFPS(30);
-        textureMap.put("AND", LoadTexture("AND.png"));
-        textureMap.put("NOT", LoadTexture("NOT.png"));
-        textureMap.put("OR", LoadTexture("OR.png"));
-        textureMap.put("Unknown", LoadTexture("Unknown.png"));
-        SetWindowIcon(LoadImage("Icon.png"));
+        textureMap.put("AND", LoadTexture("src/main/resources/NOT.png"));
+        textureMap.put("NOT", LoadTexture("src/main/resources/NOT.png"));
+        textureMap.put("OR", LoadTexture("src/main/resources/OR.png"));
+        textureMap.put("Unknown", LoadTexture("src/main/resources/Unknown.png"));
+        SetWindowIcon(LoadImage("src/main/resources/Icon.png"));
     }
 
     @Override
