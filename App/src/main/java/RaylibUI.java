@@ -24,12 +24,8 @@ public class RaylibUI implements UI {
 
     @Override
     public void load() {
-        InitWindow(SCREENHEIGHT, SCREENHEIGHT, "Logiq");
+        InitWindow(SCREENWIDTH, SCREENHEIGHT, "Logiq");
         SetTargetFPS(30);
-        if(!IsWindowFullscreen()){
-            ToggleFullscreen();
-        }
-
     }
 
     @Override
