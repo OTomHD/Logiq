@@ -1,17 +1,17 @@
 public class CNot extends Component{
 
-    CNot() {
-        super(1, 1);
+    CNot(int x, int y) {
+        super(1, 1, x , y, ComponentType.NOT);
     }
 
     @Override
     public void run() {
-        boolean value = inputPins[0].getState();
+        boolean value = getInPins()[0].getState();
         if (value) {
-            outputPins[0].setState(false);
+            getOutPins()[0].setState(false);
             return;
         }
-        outputPins[0].setState(true);
+        getOutPins()[0].setState(true);
         
     }
     

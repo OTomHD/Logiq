@@ -1,4 +1,3 @@
 rootProject.name = 'Logiq'
 include 'App'
 include 'libary'
-include 'UI'

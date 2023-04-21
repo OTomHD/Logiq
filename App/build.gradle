@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 repositories {
@@ -7,11 +7,18 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass = "App"
+}
 
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-
+    implementation 'uk.co.electronstudio.jaylib:jaylib:4.2.+'
     implementation project(':libary')
+}
+
+run{
+    standardInput = System.in
 }

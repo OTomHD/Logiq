@@ -1,18 +1,18 @@
 public class CAnd extends Component {
 
-    CAnd() {
-        super(2, 1);
+    CAnd(int x, int y) {
+        super(2, 1,x, y, ComponentType.AND);
     }
 
     @Override
     public void run() {
-        boolean value1 = inputPins[0].getState();
-        boolean value2 = inputPins[1].getState();
+        boolean value1 = getInPins()[0].getState();
+        boolean value2 = getInPins()[1].getState();
         if (value1 == true && value2 == true){
-            outputPins[0].setState(true);
+            getOutPins()[0].setState(true);
             return;
         }
-        outputPins[0].setState(false);
+        getOutPins()[0].setState(false);
     }
     
 }

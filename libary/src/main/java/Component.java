@@ -1,22 +1,49 @@
-public abstract class Component{
+import java.io.Serializable;
 
-    Pin[] inputPins;
-    Pin[] outputPins;
+public abstract class Component implements Serializable{
 
-    Component(int input, int output){
+    private Pin[] inputPins;
+    private Pin[] outputPins;
+
+    private Point position;
+    private String id=null;
+    private ComponentType compType;
+
+    Component(int input, int output,int x, int y, ComponentType type){
+        this.position = new Point(x, y);
+
         this.inputPins = new Pin[input];
         this.outputPins = new Pin[output];
+        this.compType = type;
         for (int i = 0; i < input; i++) {
-            this.inputPins[i] = new Pin();
+            this.inputPins[i] = new Pin(i,PinType.INPUT,this);
         }
         for (int i = 0; i < output; i++) {
-            this.outputPins[i] = new Pin();
+            this.outputPins[i] = new Pin(i,PinType.OUTPUT,this);
         }
     }
 
     public abstract void run();
 
-    public Pin getConnectedTo(int pin){ return this.outputPins[pin];}
-    public void connect(int ID, Pin to){ this.outputPins[ID] = to;}
-    public void disconnect(int ID){this.outputPins[ID] = new Pin();}
+    public int largestPinArray(){
+        return inputPins.length > outputPins.length ? inputPins.length : outputPins.length;
+    }
+
+    public Pin[] getOutPins(){
+        return outputPins;
+    }
+    public Pin[] getInPins(){
+        return inputPins;
+    }
+
+    public Point getPosition(){
+        return position;
+    }
+
+    public ComponentType getComponentType(){
+        return compType;
+    }
+
+    public void setID(String newID){ id = newID; }
+    public String getID(){ return id; }
 }
