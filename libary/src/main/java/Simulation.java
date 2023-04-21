@@ -32,9 +32,21 @@ public class Simulation implements Serializable {
     }
 
     public void step(){
+        ArrayList<Thread> threadList =  new ArrayList<Thread>();
         for (Component component:components) {
-            component.run();
+            Thread thread = new Thread(component);
+            thread.start();
+            threadList.add(thread);
         }
+        for (Thread thread : threadList) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                System.out.println("Component Thread was Interrupted");
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void addComponent(Component component){
