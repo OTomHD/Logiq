@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public abstract class Component implements Serializable{
+public abstract class Component implements Serializable, Runnable{
 
     private Pin[] inputPins;
     private Pin[] outputPins;
@@ -23,6 +23,7 @@ public abstract class Component implements Serializable{
         }
     }
 
+    @Override
     public abstract void run();
 
     public int largestPinArray(){

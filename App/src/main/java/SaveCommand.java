@@ -1,10 +1,10 @@
-public class saveCommand extends Command{
+public class SaveCommand extends Command{
     String sign = "CMD -> String\n";
     String example = "save FilePath - example\n";
 
     String filePath;
 
-    public saveCommand(String filePath){
+    public SaveCommand(String filePath){
         this.filePath = filePath;
     }
 

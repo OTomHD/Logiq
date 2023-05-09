@@ -204,7 +204,7 @@ public class CommandHelper implements Runnable {
 
                     String filePathSave = command[1];
 
-                    cmd = new saveCommand(filePathSave);
+                    cmd = new SaveCommand(filePathSave);
                     break;
 
                 case "load":
@@ -217,9 +217,19 @@ public class CommandHelper implements Runnable {
                     
                     cmd = new LoadCommand(filePathLoad);
                     break;
+                case "help":
+                    System.out.println("toggle : Toggle a simulation input Pin (Index starts at 0)");
+                    System.out.println("add : Adds a component to the simulation");
+                    System.out.println("connect : connect two pins together (use Sim to access Simulation pins)");
+                    System.out.println("move : Move a component to a new location in the simulation");
+                    System.out.println("save : Save the current Simulation to file path");
+                    System.out.println("load : Load and replace current Simulation from file path");
+
+                    System.out.println("help : Shows this menu");
+                    continue;
                 default:
-                System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
-                continue;
+                    System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
+                    continue;
             }
             cmd.execute();
         }
