@@ -26,7 +26,7 @@ public class RaylibUI implements UI {
     public void load() {
         InitWindow(SCREENHEIGHT, SCREENHEIGHT, "Logiq");
         SetTargetFPS(30);
-        if(!IsWindowFullscreen()){
+        if(IsWindowFullscreen()){
             ToggleFullscreen();
         }
 
