@@ -113,7 +113,6 @@ class App {
     private static void internalClose(){
         shouldClose = true;
         view.close();
-        helper.getThread().interrupt();
     }
 
     public void close(){

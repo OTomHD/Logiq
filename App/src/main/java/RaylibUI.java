@@ -30,7 +30,12 @@ public class RaylibUI implements UI {
     public void load() {
         InitWindow(SCREENWIDTH, SCREENHEIGHT, "Logiq");
         SetTargetFPS(30);
-        textureMap.put("AND", LoadTexture("src/main/resources/NOT.png"));
+      
+        if(IsWindowFullscreen()){
+            ToggleFullscreen();
+        }
+      
+        textureMap.put("AND", LoadTexture("src/main/resources/AND.png"));
         textureMap.put("NOT", LoadTexture("src/main/resources/NOT.png"));
         textureMap.put("OR", LoadTexture("src/main/resources/OR.png"));
         textureMap.put("Unknown", LoadTexture("src/main/resources/Unknown.png"));
