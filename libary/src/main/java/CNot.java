@@ -7,12 +7,7 @@ public class CNot extends Component{
     @Override
     public void run() {
         boolean value = getInPins()[0].getState();
-        if (value) {
-            getOutPins()[0].setState(false);
-            return;
-        }
-        getOutPins()[0].setState(true);
-        
+        getOutPins()[0].setState(!(value));   
     }
     
 }
