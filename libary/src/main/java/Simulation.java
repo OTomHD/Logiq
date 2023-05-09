@@ -40,7 +40,7 @@ public class Simulation implements Serializable {
     public void addComponent(Component component){
         components.add(component);}
     
-    public void subComponent(Component component){
+    public void removeComponent(Component component){
         if(components.contains(component)){
             components.remove(component);
         }else{
