@@ -57,10 +57,10 @@ public class RaylibUI implements UI {
 
     @Override
     public void close(){
-        textureMap.get("AND").close();
-        textureMap.get("OR").close();
-        textureMap.get("NOT").close();
-        textureMap.get("Unknown").close();
+        for (Texture texture : textureMap.values()) {
+            texture.close();
+        }
+        textureMap.clear();
         CloseWindow();
     }
 
