@@ -242,11 +242,12 @@ public class CommandHelper implements Runnable {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String stringCommand;
         while(!App.getInstanceApp().ShouldClose()){
-            parseCommands();
+            
             try{
                 System.out.print(":> ");
                 while (!input.ready() && !App.getInstanceApp().ShouldClose()) {
                     Thread.sleep(200);
+                    parseCommands();
                 }
                 if (App.getInstanceApp().ShouldClose()) {
                     continue;
