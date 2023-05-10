@@ -137,7 +137,7 @@ public class CommandHelper implements Runnable {
             
                     PinType fromPinType;
                     try {
-                        fromPinType = PinType.valueOf(command[3]);
+                        fromPinType = PinType.valueOf(command[3].toUpperCase());
                     } catch (IllegalArgumentException e) {
                         System.err.println("[CommandHelper/connect] - Incompatiable type for variable ToPinNumber");
                         continue;
@@ -156,7 +156,7 @@ public class CommandHelper implements Runnable {
                     
                     PinType toPinType;
                     try {
-                        toPinType = PinType.valueOf(command[6]);
+                        toPinType = PinType.valueOf(command[6].toUpperCase());
                     } catch (IllegalArgumentException e) {
                     System.err.println("[CommandHelper/connect] - Incompatible type for variable ToPinType");
                     continue;
@@ -229,6 +229,7 @@ public class CommandHelper implements Runnable {
                     continue;
                 default:
                     System.err.println("[CommandHelper] - "+command[0]+" Non-existant/Unimplemented command");
+                    System.err.println("Use help to see available commands");
                     continue;
             }
             cmd.execute();
@@ -241,6 +242,7 @@ public class CommandHelper implements Runnable {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String stringCommand;
         while(!App.getInstanceApp().ShouldClose()){
+            parseCommands();
             try{
                 System.out.print(":> ");
                 while (!input.ready() && !App.getInstanceApp().ShouldClose()) {
@@ -261,7 +263,7 @@ public class CommandHelper implements Runnable {
                 System.err.println("[CommandHelper] - IOException");
                 e.printStackTrace();
             }
-            parseCommands();
+            
         }
     }
 //~~~~~~~~~~~~~~~~~~~Class~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
