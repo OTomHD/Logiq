@@ -19,8 +19,7 @@ public class MoveCommand extends Command {
             System.err.println("[MoveCommand] - Component was null");
             return;
         }
-        component.getPosition().setX(x);
-        component.getPosition().setY(y);
+        App.getInstanceApp().moveComponent(component, x, y);
     }
 
     
