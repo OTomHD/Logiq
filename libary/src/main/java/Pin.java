@@ -30,9 +30,18 @@ public class Pin implements Serializable{
 
 
     public void connect(Pin inputPin){
+        if (!(connectedTo == null)) {
+            disconnect();
+        }
         setConnected(inputPin);
         connectedTo.setConnected(this);
         connectedTo.setState(this.getState());
+    }
+
+    public void disconnect(){
+        connectedTo.setState(false);
+        connectedTo.setConnected(null);
+        setConnected(null);
     }
 
     public Pin getConnected(){
