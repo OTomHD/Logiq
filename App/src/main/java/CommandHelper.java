@@ -25,14 +25,12 @@ public class CommandHelper implements Runnable {
     public static Pin findPin(String name, int pinIndex, PinType type){
         Pin pin = null;
         if(name.equals("Sim")) { // Simulation Pins
-            System.out.println("PIN SIM");
             if(type == PinType.INPUT){
                 pin = App.getInstanceApp().getSimulation().getInPins()[pinIndex];
             }else{
                 pin = App.getInstanceApp().getSimulation().getOutPins()[pinIndex];
             }
         }else{              // Component Pins
-            System.out.println("PIN COMPONENT");
             Component component = findComponent(name);
             if(component == null){
                 System.out.println("No component Found called: " + name);
