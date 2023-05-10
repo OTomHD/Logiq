@@ -244,7 +244,6 @@ public class CommandHelper implements Runnable {
             try{
                 System.out.print(":> ");
                 while (!input.ready() && !App.getInstanceApp().ShouldClose()) {
-                    System.out.println("TEST");
                     Thread.sleep(200);
                 }
                 if (App.getInstanceApp().ShouldClose()) {
