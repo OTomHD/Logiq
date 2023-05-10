@@ -104,7 +104,7 @@ public class RaylibUI implements UI {
 
             if (!(pin.getConnected() == null)){
                 Vector2 endVec = getPinVector2(pin.getConnected());
-                drawConnection(startVec, endVec);
+                DrawLineBezier(startVec, endVec, size/15, BLACK);
                 endVec.close();
             }
 
@@ -124,10 +124,6 @@ public class RaylibUI implements UI {
             vector.y(pin.getPosition().getY()*(SCREENHEIGHT/8)-((SCREENHEIGHT/8)/2));
         } 
         return vector;
-    }
-
-    private void drawConnection(Vector2 startPinPos, Vector2 endPinPos){
-        DrawLineBezier(startPinPos, endPinPos, size/15, BLACK);
     }
 
     private Color pickColor(ComponentType type){
