@@ -1,7 +1,4 @@
 public class ConnectCommand extends Command {
-    String sign = "CMD -> String -> int -> String -> String -> int -> String\n";
-    String example = "connect ComponentFromName FromPinNumber FromPinType ComponentToName ToPinNumber ToPinType - Example\n Use name \"Sim\" for simulation pins";
-
 
     String fromComponentName;
     String toComponentName;

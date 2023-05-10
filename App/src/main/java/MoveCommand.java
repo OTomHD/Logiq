@@ -1,7 +1,4 @@
 public class MoveCommand extends Command {
-    String sign = "CMD -> String -> int -> int\n";
-    String example = "move ComponentName ComponentX ComponentY - Example\n";
-
 
     String componentName;
     int x;

@@ -1,7 +1,4 @@
 public class AddCommand extends Command {
-    String sign = "CMD -> String -> String -> int -> int\n";
-    String example = "add ComponentName ComponentType ComponentX ComponentY - Example\n";
-
 
     String componentName;
     ComponentType type;

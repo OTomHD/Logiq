@@ -1,7 +1,4 @@
 public class ToggleCommand extends Command {
-    String sign = "CMD -> int\n";
-    String example = "toggle SimulationPinNumber - Example\n";
-
 
     int simPinNumber;
 

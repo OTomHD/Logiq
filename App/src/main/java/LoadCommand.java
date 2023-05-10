@@ -1,6 +1,4 @@
 public class LoadCommand extends Command {
-    String sign = "";
-    String example = "";
 
     String filePath;
 

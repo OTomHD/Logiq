@@ -1,6 +1,4 @@
 public class SaveCommand extends Command{
-    String sign = "CMD -> String\n";
-    String example = "save FilePath - example\n";
 
     String filePath;
 
