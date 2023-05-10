@@ -45,7 +45,7 @@ public class RaylibUI implements UI {
     public void render(ArrayList<Component> comps, Pin[] inputPins, Pin[] outputPins){
         BeginDrawing();
         ClearBackground(DARKGRAY);
-        DrawFPS(20, 20);
+        //DrawFPS(20, 20);
 
         drawComponents(comps);
 
@@ -98,23 +98,19 @@ public class RaylibUI implements UI {
 
     private void drawPins(Pin[] pins, int pinSize){
         for(Pin pin : pins){
-            drawPin(pin, pinSize);
+            Color startStateColor = pin.getState() ? RED : WHITE;
+
+            Vector2 startVec = getPinVector2(pin);
+
+            if (!(pin.getConnected() == null)){
+                Vector2 endVec = getPinVector2(pin.getConnected());
+                drawConnection(startVec, endVec);
+                endVec.close();
+            }
+
+            DrawCircle((int)startVec.x(), (int)startVec.y(), pinSize, startStateColor);
+            startVec.close();
         }
-    }
-
-    private void drawPin(Pin pin, int pinSize){
-        Color startStateColor = pin.getState() ? RED : WHITE;
-
-        Vector2 startVec = getPinVector2(pin);
-
-        if (!(pin.getConnected() == null)){
-            Vector2 endVec = getPinVector2(pin.getConnected());
-            drawConnection(startVec, endVec);
-            endVec.close();
-        }
-
-        DrawCircle((int)startVec.x(), (int)startVec.y(), pinSize, startStateColor);
-        startVec.close();
     }
 
     private Vector2 getPinVector2(Pin pin){
