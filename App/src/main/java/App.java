@@ -54,11 +54,7 @@ class App {
     }
 
     public void connect(Pin pin1, Pin pin2){
-        if(pin1.getType() == PinType.INPUT){
-            pin1.connect(pin2);
-        }else{
-            pin2.connect(pin1);
-        }
+        pin1.connect(pin2);
     }
 
 
